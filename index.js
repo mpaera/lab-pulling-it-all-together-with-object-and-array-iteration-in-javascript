@@ -114,3 +114,107 @@ function gameObject() {
         },
     };
 }
+
+// 1. Points scored
+function numPointsScored(playerName) {
+    const game = gameObject();
+
+    for (let team in game) {
+        const players = game[team].players;
+
+        if (players[playerName]) {
+            return players[playerName].points;
+        }
+    }
+}
+
+// 2. Shoe size
+function shoeSize(playerName) {
+    const game = gameObject();
+
+    for (let team in game) {
+        const players = game[team].players;
+
+        if (players[playerName]) {
+            return players[playerName].shoe;
+        }
+    }
+}
+
+// 3. Team colors
+function teamColors(teamName) {
+    const game = gameObject();
+
+    for (let team in game) {
+        if (game[team].teamName === teamName) {
+            return game[team].colors;
+        }
+    }
+}
+
+// 4. Team names
+function teamNames() {
+    const game = gameObject();
+    let names = [];
+
+    for (let team in game) {
+        names.push(game[team].teamName);
+    }
+
+    return names;
+}
+
+// 5. Player numbers
+function playerNumbers(teamName) {
+    const game = gameObject();
+
+    for (let team in game) {
+        if (game[team].teamName === teamName) {
+            const players = game[team].players;
+
+            let numbers = [];
+
+            for (let player in players) {
+                numbers.push(players[player].number);
+            }
+
+            return numbers;
+        }
+    }
+}
+
+// 6. Player stats
+function playerStats(playerName) {
+    const game = gameObject();
+
+    for (let team in game) {
+        const players = game[team].players;
+
+        if (players[playerName]) {
+            return players[playerName];
+        }
+    }
+}
+
+// 7. Biggest shoe rebounds
+function bigShoeRebounds() {
+    const game = gameObject();
+
+    let biggestShoe = 0;
+    let rebounds = 0;
+
+    for (let team in game) {
+        const players = game[team].players;
+
+        for (let player in players) {
+            let currentPlayer = players[player];
+
+            if (currentPlayer.shoe > biggestShoe) {
+                biggestShoe = currentPlayer.shoe;
+                rebounds = currentPlayer.rebounds;
+            }
+        }
+    }
+
+    return rebounds;
+}
